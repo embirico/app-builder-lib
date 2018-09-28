@@ -163,7 +163,8 @@ function checkDependencies(dependencies, errors) {
 
   const updaterVersion = dependencies["electron-updater"];
 
-  if (updaterVersion != null && !semver().satisfies(versionFromDependencyRange(updaterVersion), ">=3.0.3")) {
+  // XXX(AE): Skip electron-updater version check because we're using a forked version
+  if (false) { // (updaterVersion != null && !semver().satisfies(versionFromDependencyRange(updaterVersion), ">=3.0.3")) {
     errors.push(`At least electron-updater 3.0.3 is recommended by current electron-builder version. Please set electron-updater version to "^3.0.3"`);
   }
 
@@ -184,5 +185,5 @@ function checkDependencies(dependencies, errors) {
       errors.push(`Package "${name}" is only allowed in "devDependencies". ` + `Please remove it from the "dependencies" section in your package.json.`);
     }
   }
-} 
+}
 //# sourceMappingURL=packageMetadata.js.map
